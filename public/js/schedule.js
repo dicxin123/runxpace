@@ -274,10 +274,11 @@ async function saveSchedule() {
   try {
     const res = await fetch(`/schedule/api/${scheduleId}`, {
       method: 'POST',
+      credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ schedule: collectScheduleData() })
     });
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) throw new Error(data.error || 'Failed to save schedule.');
     showSaveMessage('Schedule saved.');
   } catch (err) {
@@ -290,12 +291,12 @@ async function saveSchedule() {
 
 async function loadSavedSchedule() {
   try {
-    const res = await fetch(`/schedule/api/${scheduleId}`);
+    const res = await fetch(`/schedule/api/${scheduleId}`, { credentials: 'same-origin' });
     if (!res.ok) {
       if (res.status === 404) window.location.href = '/user';
       return false;
     }
-    const { name, schedule } = await res.json();
+    const { name, schedule } = await parseJsonResponse(res);
     const titleEl = document.getElementById('schedule-title');
     if (titleEl && name) titleEl.textContent = name;
     document.title = `${name} · Training Schedule`;

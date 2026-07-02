@@ -53,8 +53,8 @@ function renderSchedules(schedules) {
 }
 
 async function loadSchedules() {
-  const res = await fetch('/user/api/schedules');
-  const data = await res.json();
+  const res = await fetch('/user/api/schedules', { credentials: 'same-origin' });
+  const data = await parseJsonResponse(res);
   if (!res.ok) throw new Error(data.error || 'Failed to load schedules.');
   renderSchedules(data.schedules || []);
 }
@@ -65,10 +65,11 @@ async function createSchedule() {
 
   const res = await fetch('/user/api/schedules', {
     method: 'POST',
+    credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name })
   });
-  const data = await res.json();
+  const data = await parseJsonResponse(res);
   if (!res.ok) throw new Error(data.error || 'Failed to create schedule.');
 
   window.location.href = `/schedule/${data.schedule.id}`;
@@ -77,10 +78,11 @@ async function createSchedule() {
 async function renameSchedule(id, name) {
   const res = await fetch(`/user/api/schedules/${id}`, {
     method: 'PATCH',
+    credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name })
   });
-  const data = await res.json();
+  const data = await parseJsonResponse(res);
   if (!res.ok) throw new Error(data.error || 'Failed to rename schedule.');
   return data.schedule;
 }

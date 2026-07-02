@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
     setSessionUser(req, user);
     res.redirect('/user');
   } catch (err) {
-    console.error('Login error:', err.message, err.cause?.message || '');
+    console.error('Login error:', err.message, err.cause?.message || '', err.details || '');
     return res.redirect(`/auth/login?error=${encodeURIComponent('Something went wrong. Please try again.')}`);
   }
 });

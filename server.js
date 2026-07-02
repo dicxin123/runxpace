@@ -31,8 +31,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
+    secure: process.env.VERCEL === '1' || process.env.NODE_ENV === 'production',
     httpOnly: true,
+    sameSite: 'lax',
     maxAge: 1000 * 60 * 60 * 24 // 24 hours
   }
 }));
@@ -51,7 +52,8 @@ app.use((req, res, next) => {
 const loginLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutes
   max: 20,
-  message: 'Too many login attempts. Please try again in 5 minutes.'
+  message: 'Too many login attempts. Please try again in 5 minutes.',
+  validate: { xForwardedForHeader: false }
 });
 
 // ─── Routes ─────────────────────────────────────────────────────────
@@ -73,6 +75,10 @@ app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`\n✅  Training Schedule App running at http://localhost:${PORT}\n`);
-});
+module.exports = app;
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`\n✅  Training Schedule App running at http://localhost:${PORT}\n`);
+  });
+}

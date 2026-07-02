@@ -3,6 +3,10 @@
  */
 function requireAuth(req, res, next) {
   if (!req.session.user) {
+    const isApi = req.originalUrl.includes('/api/');
+    if (isApi) {
+      return res.status(401).json({ error: 'Please log in to continue.' });
+    }
     req.flash('error', 'Please log in to continue.');
     return res.redirect('/auth/login');
   }

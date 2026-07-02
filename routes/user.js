@@ -23,8 +23,8 @@ router.post('/api/schedules', async (req, res) => {
     const schedule = await scheduleStore.create(req.session.user.id, name);
     res.status(201).json({ schedule });
   } catch (err) {
-    console.error('Create schedule error:', err.message);
-    res.status(500).json({ error: 'Failed to create schedule.' });
+    console.error('Create schedule error:', err.message, err.details || '');
+    res.status(500).json({ error: err.message || 'Failed to create schedule.' });
   }
 });
 
