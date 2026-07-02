@@ -13,6 +13,9 @@ const { requireAuth } = require('./middleware/auth');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Vercel (and other reverse proxies) send X-Forwarded-For — required for rate-limit
+app.set('trust proxy', 1);
+
 // ─── View engine ────────────────────────────────────────────────────
 app.set('view engine', 'html');
 app.engine('html', require('fs').readFileSync.bind(null)); // use static HTML
