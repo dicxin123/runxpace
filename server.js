@@ -46,9 +46,9 @@ app.use((req, res, next) => {
 
 // ─── Rate limiting ───────────────────────────────────────────────────
 const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10,
-  message: 'Too many login attempts. Please try again in 15 minutes.'
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 20,
+  message: 'Too many login attempts. Please try again in 5 minutes.'
 });
 
 // ─── Routes ─────────────────────────────────────────────────────────
