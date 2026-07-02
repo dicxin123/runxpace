@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Schedules · Training Schedule</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/user.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/user" class="nav-logo">🏃 RunxPace</a>
+    <div class="nav-right">
+      <span id="nav-name" class="nav-name"></span>
+      <form action="/auth/logout" method="POST" style="display:inline">
+        <button type="submit" class="nav-logout">Sign out</button>
+      </form>
+    </div>
+  </nav>
+
+  <main class="user-main">
+    <div class="user-header">
+      <div>
+        <h1>My training schedules</h1>
+        <p class="user-sub">Create, rename, and open your training plans.</p>
+      </div>
+      <button type="button" id="new-schedule-btn" class="btn-primary">+ New schedule</button>
+    </div>
+
+    <div id="flash-error" class="flash flash-error" style="display:none"></div>
+    <div id="flash-success" class="flash flash-success" style="display:none"></div>
+
+    <div id="new-schedule-form" class="new-schedule-form" style="display:none">
+      <label for="new-schedule-name">Schedule name</label>
+      <div class="new-schedule-row">
+        <input type="text" id="new-schedule-name" placeholder="e.g. Marathon block — Spring 2026" maxlength="120" />
+        <button type="button" id="create-schedule-btn" class="btn-primary">Create</button>
+        <button type="button" id="cancel-new-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+
+    <div id="schedule-list" class="schedule-list"></div>
+    <p id="empty-state" class="empty-state" style="display:none">No schedules yet. Click <strong>New schedule</strong> to get started.</p>
+  </main>
+
+  <script src="/js/user.js"></script>
+  <script src="/js/flash.js"></script>
+</body>
+</html>

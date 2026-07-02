@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training Schedule</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/schedule.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/user" class="nav-logo">🏃 RunxPace</a>
+    <div class="nav-right">
+      <a href="/user" class="nav-link">My schedules</a>
+      <span id="nav-name" class="nav-name"></span>
+      <form action="/auth/logout" method="POST" style="display:inline">
+        <button type="submit" class="nav-logout">Sign out</button>
+      </form>
+    </div>
+  </nav>
+
+  <main class="schedule-main">
+    <div class="schedule-page-header">
+      <div>
+        <a href="/user" class="back-link">← My schedules</a>
+        <h1 id="schedule-title">Training Schedule</h1>
+      </div>
+    </div>
+
+    <div id="flash-success" class="flash flash-success" style="display:none"></div>
+
+    <!-- Goal controls -->
+    <div class="goal-row">
+      <div class="control-box" style="flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;">
+          <label for="start-date" style="display: flex; flex-direction: column;">
+            <strong>Start Date of the block</strong>
+            <input type="date" id="start-date" onchange="syncStartDateToManual(); updateWeeksFromDates()" />
+          </label>
+          <label for="start-date-manual" style="display: flex; flex-direction: column;">
+            <strong>or type (YYYY-MM-DD)</strong>
+            <input type="text" id="start-date-manual" placeholder="2026-07-01" onchange="setStartDateFromManual()" class="manual-date-input" />
+          </label>
+        </div>
+      </div>
+      <div class="control-box" style="flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;">
+          <label for="race-date" style="display: flex; flex-direction: column;">
+            <strong>Race Date</strong>
+            <input type="date" id="race-date" onchange="syncRaceDateToManual(); updateWeeksFromDates()" />
+          </label>
+          <label for="race-date-manual" style="display: flex; flex-direction: column;">
+            <strong>or type (YYYY-MM-DD)</strong>
+            <input type="text" id="race-date-manual" placeholder="2026-08-01" onchange="setRaceDateFromManual()" class="manual-date-input" />
+          </label>
+        </div>
+      </div>
+      <div class="control-box">
+        <label>
+          Race target:
+          <select id="race-select" onchange="updateGoalInfo()">
+            <option value="3000">3km</option>
+            <option value="5000">5km</option>
+            <option value="10000">10km</option>
+            <option value="21097">Half marathon</option>
+            <option value="42195">Marathon</option>
+          </select>
+        </label>
+        <label>
+          Goal time:
+          <input type="text" id="goal-time" placeholder="hh:mm:ss or mm:ss" oninput="updateGoalInfo()" />
+        </label>
+        <div class="goal-output" id="goal-output">Distance: 3.0 km (1.86 mi) · Pace: --:-- /km (--:-- /mi)</div>
+      </div>
+    </div>
+
+    <p>Use the table below to plan weekly workouts. Click <strong>Add Week</strong> to add more rows.</p>
+
+    <div class="table-container">
+      <table id="schedule-table">
+        <colgroup>
+          <col class="col-week" />
+          <col class="col-day" span="7" />
+          <col class="col-note" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody id="schedule-body"></tbody>
+      </table>
+    </div>
+
+    <div class="button-row">
+      <button type="button" onclick="addWeek()">Add Week</button>
+      <button type="button" onclick="removeWeek()">Remove Week</button>
+      <button type="button" id="save-btn" onclick="saveSchedule()">Save</button>
+    </div>
+    <p class="note">Tip: click any day cell to type your workout. Use the controls above to set dates automatically, then click <strong>Save</strong> to store your plan.</p>
+  </main>
+
+  <script src="/js/schedule.js"></script>
+  <script src="/js/flash.js"></script>
+  <script>
+    fetch('/schedule/api/me')
+      .then(r => r.json())
+      .then(({ name }) => {
+        document.getElementById('nav-name').textContent = name;
+      });
+  </script>
+</body>
+</html>

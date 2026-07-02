@@ -1,0 +1,122 @@
+.user-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.user-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.user-header h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.user-sub {
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.new-schedule-form {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.new-schedule-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.new-schedule-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.new-schedule-row input {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid #9ca3af;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-card {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.schedule-card-main {
+  flex: 1;
+  min-width: 200px;
+}
+
+.schedule-name-display {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.schedule-meta {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.schedule-rename-row {
+  display: none;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.schedule-rename-row.is-open {
+  display: flex;
+}
+
+.schedule-rename-row input {
+  flex: 1;
+  min-width: 180px;
+  padding: 8px 10px;
+  border: 1px solid #9ca3af;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.schedule-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 20px;
+  background: #fff;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+}

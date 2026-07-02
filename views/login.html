@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login · Training Schedule</title>
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body>
+  <div class="auth-card">
+    <div class="auth-logo">🏃</div>
+    <h1>Welcome back</h1>
+    <p class="auth-sub">Sign in to your training schedule</p>
+
+    <div id="flash-error" class="flash flash-error" style="display:none"></div>
+    <div id="flash-success" class="flash flash-success" style="display:none"></div>
+
+    <form action="/auth/login" method="POST" class="auth-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" autocomplete="username" required placeholder="Your name" minlength="2" maxlength="50" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required placeholder="••••••••" />
+
+      <button type="submit" class="btn-primary">Sign in</button>
+    </form>
+
+    <p class="auth-footer">Don't have an account? <a href="/auth/register">Create one</a></p>
+  </div>
+  <script src="/js/flash.js"></script>
+</body>
+</html>

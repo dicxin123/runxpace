@@ -1,0 +1,102 @@
+/* ─── Reset & base ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+  min-height: 100vh;
+}
+
+/* ─── Navigation ─────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111827;
+  color: white;
+  padding: 0 24px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-name {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.nav-logout {
+  background: transparent;
+  border: 1px solid #374151;
+  color: #d1d5db;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.nav-logout:hover { background: #1f2937; }
+
+/* ─── Flash messages ─────────────────────────────────────────── */
+.flash {
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.flash-error  { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.flash-success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+button, .btn-primary, .btn-secondary {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-primary:hover { background: #1d4ed8; }
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: #e5e7eb; }

@@ -1,0 +1,242 @@
+.schedule-main {
+  padding: 24px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.schedule-main h1 {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.schedule-page-header {
+  margin-bottom: 16px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.table-container {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+  min-width: 1100px;
+}
+
+th, td {
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Column header row */
+thead th {
+  background: #111827;
+  color: white;
+  z-index: 3;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+
+thead th:first-child {
+  z-index: 4;
+}
+
+/* Week label column — sticky on horizontal scroll only */
+tbody th {
+  background: #111827;
+  color: white;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 80px;
+  height: 120px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+tbody td {
+  width: 140px;
+  height: 120px;
+  vertical-align: top;
+  overflow: hidden;
+  background: #fff;
+}
+
+tbody td:last-child {
+  width: 180px;
+}
+
+.col-week { width: 80px; }
+.col-day { width: 140px; }
+.col-note { width: 180px; }
+
+td input, td textarea, td select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #9ca3af;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 13px;
+  background: #f9fafb;
+  min-height: 100px;
+  display: block;
+}
+
+td textarea {
+  min-height: 100px;
+  resize: none;
+  font-weight: bold;
+}
+
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.button-row button {
+  background: #2563eb;
+  color: white;
+}
+.button-row button:hover { background: #1d4ed8; }
+
+#save-btn {
+  background: #059669;
+}
+
+#save-btn:hover:not(:disabled) {
+  background: #047857;
+}
+
+#save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.goal-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.goal-row .control-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.goal-row label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #1f2937;
+  min-width: 180px;
+}
+
+.goal-row .control-box label { font-weight: 700; }
+
+.goal-row input,
+.goal-row select {
+  margin-top: 6px;
+  width: 220px;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid #9ca3af;
+  border-radius: 6px;
+  background: #f9fafb;
+  font-size: 14px;
+}
+
+.manual-date-input {
+  padding: 8px;
+  border: 1px solid #9ca3af;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 140px;
+}
+
+#race-date {
+  background-color: #fee2e2;
+  border-color: #dc2626;
+}
+
+.goal-output {
+  min-width: 220px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.day-date-label {
+  display: block;
+  font-size: 12px;
+  color: #111827;
+  font-weight: 700;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.day-cell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100px;
+  width: 100%;
+}
+
+.day-input {
+  margin-top: 2px;
+  padding: 4px;
+  flex: 1;
+  min-height: 60px;
+  outline: none;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.day-input:focus { background-color: rgba(37, 99, 235, 0.05); }
+
+.note {
+  margin-top: 12px;
+  color: #475569;
+  font-size: 14px;
+}
