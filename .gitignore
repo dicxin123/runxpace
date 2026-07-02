@@ -1,0 +1,11 @@
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependency folders (uncomment the one your project uses)
+# node_modules/
+# venv/
+# .venv/
